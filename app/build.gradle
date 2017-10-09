@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.codetoart.codetoartmovies"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+        }
+    }
+
+    productFlavors {
+        stage {
+            buildConfigField 'String', 'HOST', '"https://api.themoviedb.org/3/movie/"'
+        }
+        prod {
+            //production implementation will go here..
+        }
+    }
+}
+
+ext {
+
+    // App dependencies
+    supportLibraryVersion = '26.1.0'
+    butterKnifeVersion = '7.0.1'
+    glideVersion = '3.7.0'
+    retrofitVersion = '2.3.0'
+    okhttpVersion = '3.8.0'
+    eventBusVersion = '3.0.0'
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //android support libraries
+    compile "com.android.support:support-compat:$supportLibraryVersion"
+    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    compile "com.android.support:design:$supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+
+    //butterknife
+    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+
+    //glide
+    compile "com.github.bumptech.glide:glide:$glideVersion"
+
+    //retrofit
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //okhttp
+    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+
+    //Event Bus
+    compile "org.greenrobot:eventbus:$eventBusVersion"
+
+    testCompile 'junit:junit:4.12'
+}
