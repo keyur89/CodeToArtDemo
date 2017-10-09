@@ -1,5 +1,24 @@
 apply plugin: 'com.android.application'
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        // the latest version of the android-apt plugin
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+
+apply plugin: 'com.neenbedankt.android-apt'
+
+repositories {
+    jcenter()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -30,10 +49,14 @@ android {
 
     productFlavors {
         stage {
+            //stage/dev implementation will go here..
             buildConfigField 'String', 'HOST', '"https://api.themoviedb.org/3/movie/"'
+            buildConfigField 'String', 'IMAGE_HOST', '"http://image.tmdb.org/t/p/w185/"'
         }
         prod {
             //production implementation will go here..
+            buildConfigField 'String', 'HOST', '"https://api.themoviedb.org/3/movie/"'
+            buildConfigField 'String', 'IMAGE_HOST', '"http://image.tmdb.org/t/p/w185/"'
         }
     }
 }
@@ -47,6 +70,7 @@ ext {
     retrofitVersion = '2.3.0'
     okhttpVersion = '3.8.0'
     eventBusVersion = '3.0.0'
+    dagger2Version = '2.7'
 
 }
 
@@ -79,5 +103,11 @@ dependencies {
     //Event Bus
     compile "org.greenrobot:eventbus:$eventBusVersion"
 
+    // dependency injection
+    compile "com.google.dagger:dagger:$dagger2Version"
+    apt "com.google.dagger:dagger-compiler:$dagger2Version"
+
+    compile 'javax.inject:javax.inject:1'
     testCompile 'junit:junit:4.12'
+    provided 'javax.annotation:jsr250-api:1.0'
 }

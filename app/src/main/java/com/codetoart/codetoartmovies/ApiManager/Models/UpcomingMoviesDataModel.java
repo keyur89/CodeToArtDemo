@@ -2,11 +2,14 @@ package com.codetoart.codetoartmovies.ApiManager.Models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 /**
  * Created by Keyur Tailor on 09-Oct-17.
  */
 
-public class MovieDetailsModel {
+public class UpcomingMoviesDataModel {
+
     @SerializedName("vote_count")
     int voteCount;
     @SerializedName("id")
@@ -31,6 +34,16 @@ public class MovieDetailsModel {
     String overview;
     @SerializedName("release_date")
     String releaseDate;
+    @SerializedName("genre_ids")
+    ArrayList<Integer> genreIds;
+
+    public float getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(float voteAverage) {
+        this.voteAverage = voteAverage;
+    }
 
     public int getVoteCount() {
         return voteCount;
@@ -70,14 +83,6 @@ public class MovieDetailsModel {
 
     public void setOriginalTitle(String originalTitle) {
         this.originalTitle = originalTitle;
-    }
-
-    public float getVoteAverage() {
-        return voteAverage;
-    }
-
-    public void setVoteAverage(float voteAverage) {
-        this.voteAverage = voteAverage;
     }
 
     public float getPopularity() {
@@ -134,5 +139,13 @@ public class MovieDetailsModel {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public ArrayList<Integer> getGenreIds() {
+        return genreIds;
+    }
+
+    public void setGenreIds(ArrayList<Integer> genreIds) {
+        this.genreIds = genreIds;
     }
 }

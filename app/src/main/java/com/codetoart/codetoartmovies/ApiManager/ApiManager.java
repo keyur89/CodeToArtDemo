@@ -1,6 +1,7 @@
 package com.codetoart.codetoartmovies.ApiManager;
 
 import com.codetoart.codetoartmovies.ApiManager.Models.MovieDetailsModel;
+import com.codetoart.codetoartmovies.ApiManager.Models.MovieImagesModel;
 import com.codetoart.codetoartmovies.ApiManager.Models.UpcomingMoviesModel;
 import com.codetoart.codetoartmovies.BuildConfig;
 
@@ -27,8 +28,9 @@ import retrofit2.http.Query;
 
 public class ApiManager {
 
-
+    // Please select the product flavor using build variants accordingly.
     public final static String BASE_URL = BuildConfig.HOST;
+    public final static String API_KEY = "b7cd3340a794e5a2f35e3abb820b497f";
     private static ApiManager instance = null;
     private static Map<String, String> headers = new HashMap<>();
     public Retrofit retrofit;
@@ -132,7 +134,10 @@ public class ApiManager {
         Call<UpcomingMoviesModel> getUpcomingMovies(@Query("api_key") String apiKey);
 
         @GET("{movieId}")
-        Call<MovieDetailsModel> getMovieDetails(@Path("movieId") String movieId, @Query("api_key") String apiKey);
+        Call<MovieDetailsModel> getMovieDetails(@Path("movieId") int movieId, @Query("api_key") String apiKey);
+
+        @GET("{movieId}/images")
+        Call<MovieImagesModel> getMovieImages(@Path("movieId") int movieId, @Query("api_key") String apiKey);
 
 
     }

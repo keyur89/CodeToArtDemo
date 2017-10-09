@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">CodeToArtMovies</string>
+    <string name="app_name">CodeToArt Movies</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="information">Information</string>
+    <string name="network_error">Please Check Your Network Connection and Try Again</string>
+    <string name="unexpected_error">Unexpected error occurred, please try Again</string>
+    <string name="loading">Please wait…</string>
+    <string name="no_data">Sorry, No data available.</string>
+    <string name="under_adult">(U/A)</string>
+    <string name="adult">(A)</string>
+    <string name="information_data">Developed By:\n\n\n Keyur Tailor\n\n Android Developer 4+ years Experience.</string>
+
 </resources>
