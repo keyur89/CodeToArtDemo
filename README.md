@@ -17,6 +17,7 @@ Params:
 api_key – b7cd3340a794e5a2f35e3abb820b497f
 
 movie_main
+
 2) Movie Detail Screen
 When user selects any movie from previous screen, it navigates to Movie detail screen:
 Movie images with dot-indicator (at least 1 image and maximum 5 image)
@@ -32,6 +33,7 @@ Get Images API
 https://api.themoviedb.org/3/movie/<movie-id>/images
 
 movie_details
+
 3) Information Screen
 It simply displays your name :).
 
